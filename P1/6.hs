@@ -14,7 +14,7 @@ myreverse(x:xs) = (myreverse xs) ++ [x]
 
 mytake :: [a] -> Number -> [a]
 mytake [] n = []
-mytake (x:xs) 0 = []
+mytake _ 0 = []
 mytake (x:xs) n = [x] ++ mytake xs (n-1)
 
 myelem :: [Number] -> Number -> String
@@ -27,12 +27,12 @@ myconcat [] = []
 myconcat (x:xs) = x ++ (myconcat xs)
 
 mymaximum :: [Number] -> Number 
-mymaximum [] = negate (1/0)
+mymaximum [x] = x
 mymaximum (x:xs) | x > mymaximum xs = x
-                  | x <= mymaximum xs = mymaximum xs
+                 | x <= mymaximum xs = mymaximum xs
 
 myzip :: [a] -> [b] -> [(a,b)]
-myzip [] (y:ys) = []
-myzip (x:xs) [] = []
+myzip [] _ = []
+myzip _ [] = []
 myzip [] [] = []
 myzip (x:xs) (y:ys) = [(x,y)] ++ myzip xs ys
